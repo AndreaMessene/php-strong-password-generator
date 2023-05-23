@@ -8,4 +8,11 @@
     <?php include_once __DIR__ . '/../cdns/bootstrapCss.php' ?>
 </head>
 <body>
-    <h1>password generator</h1>
+
+
+    <main class="container">
+    <h2>Password generata</h2>
+    <?php include __DIR__ . '/form.php' ?>
+    </main>
+
+
