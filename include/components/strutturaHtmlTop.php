@@ -13,6 +13,6 @@
     <main class="container">
     <h2>Password generata</h2>
     <?php include __DIR__ . '/form.php' ?>
-    </main>
+    </main> 
 
 
