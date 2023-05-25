@@ -24,22 +24,57 @@
         
         [
             'type' => 'lettere',
-            'argoments' => 'abcdefghijklmnopqrstuvwxyz',
+            'arguments' => 'abcdefghijklmnopqrstuvwxyz',
             'active' => ( isset($_GET['checkboxLettere'])  ) ? true : false 
         ],
         [
             'type' => 'numeri',
-            'argoments' => 'abcdefghijklmnopqrstuvwxyz',
+            'arguments' => '1234567890',
             'active' => ( isset($_GET['checkboxNumeri'])  ) ? true : false 
         ],
         [
             'type' => 'simboli',
-            'argoments' => 'abcdefghijklmnopqrstuvwxyz',
+            'arguments' => '|!"£$%&(=)?^@#[]*ç',
             'active' => ( isset($_GET['checkboxSimboli'])  ) ? true : false 
         ],
 
     ];
 
-    var_dump($arrayScelte)
+    // var_dump($arrayScelte);
 
-?>
+    foreach( $arrayScelte as $elem)
+    if( $elem['active']){
+        $str .= $elem['arguments'];
+        $lunghezzaConFiltri += strlen( $elem['arguments']);
+    }
+    
+    var_dump( $str, $lunghezzaConFiltri );
+
+    function generaPassword( $quantitaLettere, $password, $lunghezzaConFiltri, $str, $ripetizioni ){
+        if($quantitaLettere > 0 && $lunghezzaConFiltri > 0){
+
+            if( $ripetizioni == 'no'){
+
+                for( $i = 0; strlen($password) < $quantitaLettere; $i++ ){
+                    $letteraRandom = $str[rand(0, strlen( $str ) - 1 ) ];
+
+                    if( !preg_match("/$letteraRandom/", $password)){
+                        $password .= $letteraRandom;
+                    }
+                }
+            } 
+            else {
+                for( $i = 0; strlen($password) < $quantitaLettere; $i++ ){
+                    $password .= $str[rand(0, strlen( $str ) - 1 ) ];
+                }
+            }
+        }
+
+        return $password;
+    } 
+    
+    var_dump( generapassword( $quantitaLettere, $password, $lunghezzaConFiltri, $str, $ripetizioni ) );
+
+    $_SESSION['password'] = generapassword( $quantitaLettere, $password, $lunghezzaConFiltri, $str, $ripetizioni )
+
+?>   

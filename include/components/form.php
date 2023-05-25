@@ -1,7 +1,7 @@
-<form action="index.php" method="GET" class="">
+<form action="password.php" method="GET" class="">
 
     <div>
-        la lunghezza della password massima è:
+        la lunghezza della password massima è: <?php echo (isset( $_GET['radioValue']) && $_GET['radioValue'] == 'si' ) ? $quantitaLettere : $lunghezzaConFiltri ?>
     </div>
 
     <div class="row">
@@ -13,7 +13,7 @@
         <div class="col-6 d-flex flex-column gap-3">
 
             <div>
-                <input type="text" palceholder="quanti caratteri vuoi" name="lunghezzaCaratteri">
+                <input type="number" placeholder="quanti caratteri vuoi" name="lunghezzaCaratteri">
             </div>
 
             <div>

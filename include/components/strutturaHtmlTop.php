@@ -11,8 +11,10 @@
 
 
     <main class="container">
-    <h2>Password generata</h2>
-    <?php include __DIR__ . '/form.php' ?>
+        <h2>Password generata</h2>
+        <?php include __DIR__ . '/form.php' ?>
+
+        <?php echo $_SESSION['password'] ?>
     </main> 
 
 
